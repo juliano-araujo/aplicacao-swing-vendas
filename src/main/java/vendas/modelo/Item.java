@@ -12,32 +12,31 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Produto {
+public class Item {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer codigo;
-	
-	@Column(length = 50) 
-	String descricao;
-	
-	@Column(scale = 9, precision = 2)
-	BigDecimal valor;
 
 	Integer quantidade;
 	
+	@Column(name = "valor_parcial", scale = 9, precision = 2)
+	BigDecimal valorParcial;
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "fornecedor_codigo", referencedColumnName = "codigo")
-	Fornecedor fornecedor;
+	@JoinColumn(name = "produto_codigo", referencedColumnName = "codigo")
+	Produto produto;
 	
-	public Produto() {}
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "venda_codigo", referencedColumnName = "codigo")
+	Venda venda;
+	
+	public Item() {}
 
-	public Produto(String descricao, BigDecimal valor, Integer quantidade, Fornecedor fornecedor) {
+	public Item(Integer quantidade, BigDecimal valorParcial, Produto produto, Venda venda) {
 		super();
-		this.descricao = descricao;
-		this.valor = valor;
 		this.quantidade = quantidade;
-		this.fornecedor = fornecedor;
-	};
-	
-	
+		this.valorParcial = valorParcial;
+		this.produto = produto;
+		this.venda = venda;
+	}
 }

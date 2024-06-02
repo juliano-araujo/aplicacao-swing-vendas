@@ -6,6 +6,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.schema.Action;
 
 import vendas.modelo.Fornecedor;
+import vendas.modelo.Funcionario;
+import vendas.modelo.Item;
+import vendas.modelo.Produto;
+import vendas.modelo.Venda;
 
 
 public class App {
@@ -13,6 +17,10 @@ public class App {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = new Configuration()
 				.addAnnotatedClass(Fornecedor.class)
+				.addAnnotatedClass(Funcionario.class)
+				.addAnnotatedClass(Item.class)
+				.addAnnotatedClass(Produto.class)
+				.addAnnotatedClass(Venda.class)
 				.setProperty(AvailableSettings.JAKARTA_JDBC_URL, "jdbc:postgresql://ep-empty-union-87225778.us-east-2.aws.neon.tech/Trabalho_Vendas?sslmode=require")
 				.setProperty(AvailableSettings.JAKARTA_JDBC_USER, "Admin")
 				.setProperty(AvailableSettings.JAKARTA_JDBC_PASSWORD, "gA3abY9mwGjU")
@@ -25,7 +33,5 @@ public class App {
 	            .setProperty(AvailableSettings.HIGHLIGHT_SQL, true)
 	            // Create a new SessionFactory
 	            .buildSessionFactory();
-
 	}
-
 }
