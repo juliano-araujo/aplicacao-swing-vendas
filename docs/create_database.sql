@@ -3,11 +3,11 @@ CREATE TABLE fornecedor(
     descricao VARCHAR(45)
 );
 
-CREATE TABLE funcionario(
+CREATE TABLE pessoa(
     codigo SERIAL PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
     cpf VARCHAR(14) UNIQUE,
-    funcao VARCHAR(50) NOT NULL
+    funcao VARCHAR(50)
 );
 
 CREATE TABLE produto(
@@ -23,8 +23,10 @@ CREATE TABLE venda(
     codigo SERIAL PRIMARY KEY,
     horario TIMESTAMP NOT NULL,
     valor_total DECIMAL(9,2) NOT NULL,
-    funcionario_codigo INT NOT NULL,
-    FOREIGN KEY (funcionario_codigo) REFERENCES funcionario(codigo)
+    pessoa_codigo_vendedor INT NOT NULL,
+    pessoa_codigo_comprador INT NOT NULL,
+    FOREIGN KEY (pessoa_codigo_vendedor) REFERENCES pessoa(codigo)
+    FOREIGN KEY (pessoa_codigo_comprador) REFERENCES pessoa(codigo)
 );
 
 CREATE TABLE item (

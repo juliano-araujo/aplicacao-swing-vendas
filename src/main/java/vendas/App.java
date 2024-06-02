@@ -5,11 +5,7 @@ import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.schema.Action;
 
-import vendas.modelo.Fornecedor;
-import vendas.modelo.Funcionario;
-import vendas.modelo.Item;
-import vendas.modelo.Produto;
-import vendas.modelo.Venda;
+import vendas.modelo.*;
 
 
 public class App {
@@ -17,8 +13,8 @@ public class App {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = new Configuration()
 				.addAnnotatedClass(Fornecedor.class)
-				.addAnnotatedClass(Funcionario.class)
 				.addAnnotatedClass(Item.class)
+				.addAnnotatedClass(Pessoa.class)
 				.addAnnotatedClass(Produto.class)
 				.addAnnotatedClass(Venda.class)
 				.setProperty(AvailableSettings.JAKARTA_JDBC_URL, "jdbc:postgresql://ep-empty-union-87225778.us-east-2.aws.neon.tech/Trabalho_Vendas?sslmode=require")

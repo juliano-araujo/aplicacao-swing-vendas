@@ -2,6 +2,9 @@ package vendas.modelo;
 
 import java.util.List;
 
+import org.hibernate.annotations.NaturalId;
+
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,26 +13,31 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Funcionario {
+public class Pessoa {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer codigo;
 	
+	@NaturalId
 	@Column(length = 14) 
 	String cpf;
 	
+	@Basic(optional = false)
 	@Column(length = 45) 
 	String nome;
 	
 	@Column(length = 50) 
 	String funcao;
 	
-	@OneToMany(mappedBy = "funcionario")
+	@OneToMany(mappedBy = "vendedor")
 	List<Venda> vendas;
 	
-	public Funcionario() {};
+	@OneToMany(mappedBy = "comprador")
+	List<Venda> compras;
+	
+	public Pessoa() {};
 
-	public Funcionario(String cpf, String nome, String funcao) {
+	public Pessoa(String cpf, String nome, String funcao) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;

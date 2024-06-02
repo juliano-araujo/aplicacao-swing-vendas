@@ -26,19 +26,24 @@ public class Venda {
 	BigDecimal valorTotal;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "funcionario_codigo", referencedColumnName = "codigo")
-	Funcionario funcionario;
+	@JoinColumn(name = "pessoa_codigo_vendedor", referencedColumnName = "codigo")
+	Pessoa vendedor;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "pessoa_codigo_comprador", referencedColumnName = "codigo")
+	Pessoa comprador;
 	
 	@OneToMany(mappedBy = "venda")
 	List<Item> itens;
 	
 	public Venda() {}
 
-	public Venda(LocalDateTime horario, BigDecimal valorTotal, Funcionario funcionario) {
+	public Venda(LocalDateTime horario, BigDecimal valorTotal, Pessoa vendedor, Pessoa comprador, List<Item> itens) {
 		super();
 		this.horario = horario;
 		this.valorTotal = valorTotal;
-		this.funcionario = funcionario;
+		this.vendedor = vendedor;
+		this.comprador = comprador;
+		this.itens = itens;
 	}
-	
 }
