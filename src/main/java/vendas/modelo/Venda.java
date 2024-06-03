@@ -33,7 +33,7 @@ public class Venda {
 	@JoinColumn(name = "pessoa_codigo_comprador", referencedColumnName = "codigo")
 	Pessoa comprador;
 	
-	@OneToMany(mappedBy = "venda")
+	@OneToMany(mappedBy = Item_.VENDA)
 	List<Item> itens;
 	
 	public Venda() {}

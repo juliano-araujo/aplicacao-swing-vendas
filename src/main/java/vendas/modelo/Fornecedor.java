@@ -18,7 +18,7 @@ public class Fornecedor {
 	@Column(length = 45) 
 	String descricao;
 	
-	@OneToMany(mappedBy = "fornecedor")
+	@OneToMany(mappedBy = Produto_.FORNECEDOR)
 	List<Produto> produtos;
 	
 	public Fornecedor() {};

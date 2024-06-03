@@ -29,10 +29,10 @@ public class Pessoa {
 	@Column(length = 50) 
 	String funcao;
 	
-	@OneToMany(mappedBy = "vendedor")
+	@OneToMany(mappedBy = Venda_.VENDEDOR)
 	List<Venda> vendas;
 	
-	@OneToMany(mappedBy = "comprador")
+	@OneToMany(mappedBy = Venda_.COMPRADOR)
 	List<Venda> compras;
 	
 	public Pessoa() {};

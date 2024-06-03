@@ -29,5 +29,6 @@ public class App {
 	            .setProperty(AvailableSettings.HIGHLIGHT_SQL, true)
 	            // Create a new SessionFactory
 	            .buildSessionFactory();
+
 	}
 }

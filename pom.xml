@@ -5,6 +5,7 @@
 	<groupId>gjl3</groupId>
 	<artifactId>trabalho-vendas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<dependencies>
 		<!-- PostgreSQL dependency -->
 		<dependency>
@@ -20,14 +21,26 @@
 			<version>6.5.2.Final</version>
 		</dependency>
 
-		<!-- Hibernate JPAModelGen annotation processor -->
 
-		<dependency>
-			<groupId>org.hibernate.orm</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>6.5.2.Final</version>
-		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.hibernate.orm</groupId>
+							<artifactId>hibernate-jpamodelgen</artifactId>
+							<version>6.5.2.Final</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 
 </project>
