@@ -25,7 +25,7 @@ CREATE TABLE venda(
     valor_total DECIMAL(9,2) NOT NULL,
     pessoa_codigo_vendedor INT NOT NULL,
     pessoa_codigo_comprador INT NOT NULL,
-    FOREIGN KEY (pessoa_codigo_vendedor) REFERENCES pessoa(codigo)
+    FOREIGN KEY (pessoa_codigo_vendedor) REFERENCES pessoa(codigo),
     FOREIGN KEY (pessoa_codigo_comprador) REFERENCES pessoa(codigo)
 );
 
