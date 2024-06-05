@@ -41,6 +41,8 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
 </project>
