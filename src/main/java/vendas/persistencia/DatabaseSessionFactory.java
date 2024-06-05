@@ -13,11 +13,11 @@ import vendas.modelo.Venda;
 public class DatabaseSessionFactory {
 	
 	public static SessionFactory createSessionFactory(String username, String password) {
-		Configuration cfg = new Configuration();
+		var cfg = new Configuration();
 		
 		cfg = DatabaseSessionFactory.addAnnotatedClasses(cfg);
 		
-		SessionFactory sessionFactory = cfg
+		var sessionFactory = cfg
 				.setProperty(AvailableSettings.JAKARTA_JDBC_USER, username)
 				.setProperty(AvailableSettings.JAKARTA_JDBC_PASSWORD, password)
 				.buildSessionFactory();
