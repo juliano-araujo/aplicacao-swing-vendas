@@ -15,7 +15,7 @@ public class DatabaseSessionFactory {
 	public static SessionFactory createSessionFactory(String username, String password) {
 		var cfg = new Configuration();
 		
-		cfg = DatabaseSessionFactory.addAnnotatedClasses(cfg);
+		DatabaseSessionFactory.addAnnotatedClasses(cfg);
 		
 		var sessionFactory = cfg
 				.setProperty(AvailableSettings.JAKARTA_JDBC_USER, username)
@@ -25,7 +25,7 @@ public class DatabaseSessionFactory {
 		return sessionFactory;
 	}
 
-	private static Configuration addAnnotatedClasses(Configuration cfg) {
+	private static void addAnnotatedClasses(Configuration cfg) {
 		Class<?>[] classes = { 
 				Fornecedor.class,
 				Item.class,
@@ -37,7 +37,5 @@ public class DatabaseSessionFactory {
 		for (int i = 0; i < classes.length; i++) {
 			cfg.addAnnotatedClass(classes[i]);
 		}
-
-		return cfg;
 	}
 }
