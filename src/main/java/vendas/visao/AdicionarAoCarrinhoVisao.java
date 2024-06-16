@@ -8,12 +8,12 @@ package vendas.visao;
  *
  * @author Luis
  */
-public class VisaoAdicionarAoCarrinho1 extends javax.swing.JPanel {
+public class AdicionarAoCarrinhoVisao extends javax.swing.JPanel {
 
     /**
      * Creates new form VisaoAdicionarAoCarrinho1
      */
-    public VisaoAdicionarAoCarrinho1() {
+    public AdicionarAoCarrinhoVisao() {
         initComponents();
     }
 
