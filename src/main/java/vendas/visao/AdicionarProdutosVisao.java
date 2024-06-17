@@ -26,34 +26,34 @@ public class AdicionarProdutosVisao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        btnAdicionar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        tabela = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        line = new javax.swing.JSeparator();
+        txtProcutos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 0));
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionar.setBackground(new java.awt.Color(0, 255, 0));
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAdicionarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setText("Atualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizar.setBackground(new java.awt.Color(153, 153, 153));
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAtualizarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setText("Remover");
+        btnRemover.setBackground(new java.awt.Color(255, 0, 0));
+        btnRemover.setText("Remover");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,10 +75,10 @@ public class AdicionarProdutosVisao extends javax.swing.JFrame {
         jTable1.setCellSelectionEnabled(true);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setShowGrid(true);
-        jScrollPane2.setViewportView(jTable1);
+        tabela.setViewportView(jTable1);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel2.setText("Produtos");
+        txtProcutos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        txtProcutos.setText("Produtos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,18 +87,18 @@ public class AdicionarProdutosVisao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(txtProcutos)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(201, 201, 201)
-                                .addComponent(jButton1)
+                                .addComponent(btnAdicionar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
+                                .addComponent(btnAtualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(btnRemover))
+                            .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)))
                 .addContainerGap())
         );
@@ -106,29 +106,29 @@ public class AdicionarProdutosVisao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(txtProcutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnAdicionar)
+                    .addComponent(btnAtualizar)
+                    .addComponent(btnRemover))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,12 +169,12 @@ public class AdicionarProdutosVisao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator line;
+    private javax.swing.JScrollPane tabela;
+    private javax.swing.JLabel txtProcutos;
     // End of variables declaration//GEN-END:variables
 }
