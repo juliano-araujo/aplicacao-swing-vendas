@@ -4,6 +4,8 @@
  */
 package vendas.visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gabri
@@ -27,36 +29,41 @@ public class LoginVisao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtLogin = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JPasswordField();
+        imgCadeado = new javax.swing.JLabel();
+        txtLogin = new javax.swing.JLabel();
+        campoLogin = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JLabel();
+        campoSenha = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock (1).png"))); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(69, 154, 150));
-        jLabel2.setText("Login");
+        imgCadeado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unlock (1).png"))); // NOI18N
 
         txtLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtLogin.setForeground(new java.awt.Color(69, 154, 150));
+        txtLogin.setText("Login");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(69, 154, 150));
-        jLabel3.setText("Senha");
+        campoLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        campoLogin.setForeground(new java.awt.Color(69, 154, 150));
 
         txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSenha.setForeground(new java.awt.Color(69, 154, 150));
+        txtSenha.setText("Senha");
+
+        campoSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        campoSenha.setForeground(new java.awt.Color(69, 154, 150));
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(69, 154, 150));
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,28 +76,28 @@ public class LoginVisao extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnEntrar)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                                .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(252, 252, 252)
-                        .addComponent(jLabel1)))
+                        .addComponent(imgCadeado)))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(jLabel1)
+                .addComponent(imgCadeado)
                 .addGap(53, 53, 53)
-                .addComponent(jLabel2)
+                .addComponent(txtLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel3)
+                .addComponent(txtSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
@@ -111,6 +118,15 @@ public class LoginVisao extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        
+        if(campoLogin.getText().equals("usuario") && new String (campoSenha.getPassword()).equals("123")){
+            JOptionPane.showMessageDialog(null, "Logado");
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,12 +166,12 @@ public class LoginVisao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField campoLogin;
+    private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JLabel imgCadeado;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtLogin;
-    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JLabel txtLogin;
+    private javax.swing.JLabel txtSenha;
     // End of variables declaration//GEN-END:variables
   
 	public javax.swing.JButton getBtnEntrar() {
@@ -163,10 +179,10 @@ public class LoginVisao extends javax.swing.JFrame {
 	}
 
 	public javax.swing.JTextField getTxtLogin() {
-		return txtLogin;
+		return campoLogin;
 	}
 
 	public javax.swing.JPasswordField getTxtSenha() {
-		return txtSenha;
+		return campoSenha;
 	}
 }
