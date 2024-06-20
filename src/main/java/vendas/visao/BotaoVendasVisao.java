@@ -4,6 +4,13 @@
  */
 package vendas.visao;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
+import vendas.controle.VendaControle.PessoaComboItem;
+
 /**
  *
  * @author Luis
@@ -26,8 +33,9 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabela = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        btnAdicionar = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        tbItens = new javax.swing.JTable();
         line = new javax.swing.JSeparator();
         txtVenda = new javax.swing.JLabel();
         txtValorTotal = new javax.swing.JLabel();
@@ -38,27 +46,44 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
         cBoxFuncionario = new javax.swing.JComboBox<>();
         cBoxCliente = new javax.swing.JComboBox<>();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        setPreferredSize(new java.awt.Dimension(437, 483));
+
+        btnAdicionar.setBackground(new java.awt.Color(183, 230, 183));
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setToolTipText("");
+        btnAdicionar.setActionCommand("Adicionar Produto");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
+        tbItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Produto", "Quantidade de Itens", "Fornecedor", "Valor"
+                "Produto", "Preço", "Quantidade de Itens", "Total"
             }
-        ));
-        jTable1.setCellSelectionEnabled(true);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setShowGrid(true);
-        tabela.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tbItens.setShowGrid(true);
+        scrollPane.setViewportView(tbItens);
 
         txtVenda.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtVenda.setText("Venda");
@@ -71,14 +96,10 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
 
         btnConcluir.setBackground(new java.awt.Color(0, 255, 0));
         btnConcluir.setText("Concluir");
-        btnConcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConcluirActionPerformed(evt);
-            }
-        });
 
         txtValor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txtValor.setText("R$ XXXXX");
+        txtValor.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        txtValor.setText("R$ 0,00");
 
         txtSelecionarCliente.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         txtSelecionarCliente.setText("Selecionar Cliente:");
@@ -90,33 +111,31 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(line)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(txtVenda)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtValorTotal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtValor)
-                                    .addComponent(btnConcluir))))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addComponent(txtVenda)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSelecionarFuncionario, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(116, 116, 116))))
+                            .addComponent(btnConcluir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtValorTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSelecionarFuncionario, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,43 +144,74 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
                 .addComponent(txtVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSelecionarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtValor)
-                            .addComponent(txtValorTotal))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConcluir))
+                    .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnAdicionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorTotal))
+                .addGap(18, 18, 18)
+                .addComponent(btnConcluir)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConcluirActionPerformed
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnConcluir;
-    private javax.swing.JComboBox<String> cBoxCliente;
-    private javax.swing.JComboBox<String> cBoxFuncionario;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<PessoaComboItem> cBoxCliente;
+    private javax.swing.JComboBox<PessoaComboItem> cBoxFuncionario;
     private javax.swing.JSeparator line;
-    private javax.swing.JScrollPane tabela;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tbItens;
     private javax.swing.JLabel txtSelecionarCliente;
     private javax.swing.JLabel txtSelecionarFuncionario;
     private javax.swing.JLabel txtValor;
     private javax.swing.JLabel txtValorTotal;
     private javax.swing.JLabel txtVenda;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnConcluir() {
+        return btnConcluir;
+    }
+
+    public JComboBox<PessoaComboItem> getCBoxCliente() {
+        return cBoxCliente;
+    }
+
+    public JComboBox<PessoaComboItem> getCBoxFuncionario() {
+        return cBoxFuncionario;
+    }
+
+    public JLabel getTxtValor() {
+        return txtValor;
+    }
+
+    public JButton getBtnAdicionar() {
+        return btnAdicionar;
+    }
+
+	public javax.swing.JTable getTbItens() {
+		return tbItens;
+	}
+    
+	public DefaultTableModel getTbItensModel() {
+		return (DefaultTableModel) tbItens.getModel();
+	}
+
 }

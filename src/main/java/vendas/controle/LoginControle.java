@@ -3,6 +3,7 @@ package vendas.controle;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -33,10 +34,10 @@ public class LoginControle {
 	}
 	
 	private void btnEntrar(ActionEvent event) {
+		System.out.println("BTN > Entrar");
+		
 		var username = this.view.getTxtLogin().getText().strip();
 		var senhaArr = this.view.getTxtSenha().getPassword();
-		
-		System.out.println(ArrayUtils.toString(senhaArr));
 		
 		if (StringUtils.isBlank(username) || ArrayUtils.isEmpty(senhaArr)) {
 			JOptionPane.showMessageDialog(view, "Digite suas credenciais para entrar", "Credenciais Inválidas", JOptionPane.WARNING_MESSAGE);
@@ -54,9 +55,17 @@ public class LoginControle {
 			}
 		} catch (CredentialException e) {
 			JOptionPane.showMessageDialog(view, "Verifique seu usuário e senha", "Credenciais Inválidas", JOptionPane.WARNING_MESSAGE);
+			
+			return;
 		}
 		
 		cleanPasswordArray(senhaArr);
 		System.out.println("SYS > Conectado");
+		
+		this.view.dispose();
+		
+		SwingUtilities.invokeLater(() -> {
+			new HomeControle();
+		});
 	}
 }

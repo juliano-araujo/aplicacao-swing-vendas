@@ -51,4 +51,44 @@ public class Pessoa {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+
+	public List<Venda> getVendas() {
+		return vendas;
+	}
+
+	public void setVendas(List<Venda> vendas) {
+		this.vendas = vendas;
+	}
+
+	public List<Venda> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Venda> compras) {
+		this.compras = compras;
+	}
 }

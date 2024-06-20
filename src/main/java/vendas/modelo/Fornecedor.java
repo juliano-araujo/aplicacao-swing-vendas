@@ -27,4 +27,9 @@ public class Fornecedor {
 		super();
 		this.descricao = descricao;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}	
+	
 }

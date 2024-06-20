@@ -28,36 +28,37 @@ public class BotaoFuncionariosVisao extends javax.swing.JPanel {
 
         line = new javax.swing.JSeparator();
         txtFuncionarios = new javax.swing.JLabel();
-        tabela = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scroll = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         btnAdicionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(437, 483));
+
         txtFuncionarios.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtFuncionarios.setText("Funcionários");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nome", "CPF", "Função", "Email"
+                "ID", "Nome", "CPF", "Função"
             }
-        ));
-        jTable1.setCellSelectionEnabled(true);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setShowGrid(true);
-        tabela.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setCellSelectionEnabled(true);
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setShowGrid(true);
+        scroll.setViewportView(table);
 
         btnAdicionar.setBackground(new java.awt.Color(0, 255, 0));
         btnAdicionar.setText("Adicionar");
@@ -87,17 +88,16 @@ public class BotaoFuncionariosVisao extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(line)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFuncionarios)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(201, 201, 201)
-                                .addComponent(btnAdicionar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAtualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemover))
-                            .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                        .addComponent(txtFuncionarios)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdicionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemover)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -107,14 +107,14 @@ public class BotaoFuncionariosVisao extends javax.swing.JPanel {
                 .addComponent(txtFuncionarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
                     .addComponent(btnAtualizar)
                     .addComponent(btnRemover))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,9 +131,9 @@ public class BotaoFuncionariosVisao extends javax.swing.JPanel {
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnRemover;
-    private javax.swing.JTable jTable1;
     private javax.swing.JSeparator line;
-    private javax.swing.JScrollPane tabela;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JTable table;
     private javax.swing.JLabel txtFuncionarios;
     // End of variables declaration//GEN-END:variables
 }

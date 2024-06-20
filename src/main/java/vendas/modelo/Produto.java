@@ -37,7 +37,25 @@ public class Produto {
 		this.valor = valor;
 		this.quantidade = quantidade;
 		this.fornecedor = fornecedor;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public Fornecedor getFornecedor() {
+		return fornecedor;
 	};
-	
-	
 }

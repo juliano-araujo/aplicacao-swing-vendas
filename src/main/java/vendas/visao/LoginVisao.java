@@ -4,8 +4,6 @@
  */
 package vendas.visao;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author gabri
@@ -36,7 +34,7 @@ public class LoginVisao extends javax.swing.JFrame {
         campoSenha = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -59,11 +57,6 @@ public class LoginVisao extends javax.swing.JFrame {
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(69, 154, 150));
         btnEntrar.setText("Entrar");
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,15 +111,6 @@ public class LoginVisao extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        
-        if(campoLogin.getText().equals("usuario") && new String (campoSenha.getPassword()).equals("123")){
-            JOptionPane.showMessageDialog(null, "Logado");
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
-        }
-    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments

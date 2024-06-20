@@ -32,11 +32,43 @@ public class Item {
 	
 	public Item() {}
 
-	public Item(Integer quantidade, BigDecimal valorParcial, Produto produto, Venda venda) {
+	public Item(Integer quantidade, BigDecimal valorParcial, Produto produto) {
 		super();
 		this.quantidade = quantidade;
 		this.valorParcial = valorParcial;
 		this.produto = produto;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+	
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade ;
+	}
+
+	public BigDecimal getValorParcial() {
+		return valorParcial;
+	}
+	
+	public void setValorParcial(BigDecimal valorParcial) {
+		this.valorParcial = valorParcial;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+	
+	public void setVenda(Venda venda) {
 		this.venda = venda;
 	}
 }

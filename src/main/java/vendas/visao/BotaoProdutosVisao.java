@@ -4,16 +4,20 @@
  */
 package vendas.visao;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jujuba
  */
-public class AdicionarProdutosVisao extends javax.swing.JPanel {
+public class BotaoProdutosVisao extends javax.swing.JPanel {
 
     /**
      * Creates new form Teste
      */
-    public AdicionarProdutosVisao() {
+    public BotaoProdutosVisao() {
         initComponents();
     }
 
@@ -29,12 +33,12 @@ public class AdicionarProdutosVisao extends javax.swing.JPanel {
         btnAdicionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        tabela = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scroll = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         line = new javax.swing.JSeparator();
         txtProcutos = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(465, 457));
+        setPreferredSize(new java.awt.Dimension(437, 483));
 
         btnAdicionar.setBackground(new java.awt.Color(0, 255, 0));
         btnAdicionar.setText("Adicionar");
@@ -55,27 +59,33 @@ public class AdicionarProdutosVisao extends javax.swing.JPanel {
         btnRemover.setBackground(new java.awt.Color(255, 0, 0));
         btnRemover.setText("Remover");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID", "Produto", "Quantidade", "Fornecedor"
+                "ID", "Produto", "Fornecedor", "Valor", "Quantidade"
             }
-        ));
-        jTable1.setCellSelectionEnabled(true);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setShowGrid(true);
-        tabela.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setCellSelectionEnabled(true);
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setShowGrid(true);
+        scroll.setViewportView(table);
 
         txtProcutos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtProcutos.setText("Produtos");
@@ -87,19 +97,21 @@ public class AdicionarProdutosVisao extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtProcutos)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProcutos)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(201, 201, 201)
-                                .addComponent(btnAdicionar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAtualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemover))
-                            .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)))
+                            .addComponent(line)
+                            .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdicionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAtualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemover)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -109,14 +121,14 @@ public class AdicionarProdutosVisao extends javax.swing.JPanel {
                 .addComponent(txtProcutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
                     .addComponent(btnAtualizar)
                     .addComponent(btnRemover))
-                .addGap(18, 18, 18)
-                .addComponent(tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,9 +145,31 @@ public class AdicionarProdutosVisao extends javax.swing.JPanel {
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnRemover;
-    private javax.swing.JTable jTable1;
     private javax.swing.JSeparator line;
-    private javax.swing.JScrollPane tabela;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JTable table;
     private javax.swing.JLabel txtProcutos;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnAdicionar() {
+        return btnAdicionar;
+    }
+
+    public JButton getBtnAtualizar() {
+        return btnAtualizar;
+    }
+
+    public JButton getBtnRemover() {
+        return btnRemover;
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public DefaultTableModel getTableModel() {
+        return (DefaultTableModel) table.getModel();
+    }
+    
+
 }

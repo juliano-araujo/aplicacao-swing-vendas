@@ -4,6 +4,9 @@
  */
 package vendas.visao;
 
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author gabri
@@ -33,11 +36,11 @@ public class HomeVisao extends javax.swing.JFrame {
         btnProdutos = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnFuncionarios = new javax.swing.JButton();
-        PnlBranco = new javax.swing.JPanel();
+        pnlPrincipal = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        PnlGeral.setBackground(new java.awt.Color(204, 204, 204));
         PnlGeral.setPreferredSize(new java.awt.Dimension(652, 536));
 
         PnlColorido.setBackground(new java.awt.Color(0, 153, 153));
@@ -46,22 +49,12 @@ public class HomeVisao extends javax.swing.JFrame {
         btnVendas.setBackground(new java.awt.Color(204, 204, 204));
         btnVendas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnVendas.setText("Vendas");
-        btnVendas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendasActionPerformed(evt);
-            }
-        });
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HOME SWEET HOME (1).png"))); // NOI18N
 
         btnProdutos.setBackground(new java.awt.Color(204, 204, 204));
         btnProdutos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnProdutos.setText("Produtos");
-        btnProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProdutosActionPerformed(evt);
-            }
-        });
 
         btnClientes.setBackground(new java.awt.Color(204, 204, 204));
         btnClientes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -75,34 +68,23 @@ public class HomeVisao extends javax.swing.JFrame {
         btnFuncionarios.setBackground(new java.awt.Color(204, 204, 204));
         btnFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnFuncionarios.setText("Funcionários");
-        btnFuncionarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFuncionariosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout PnlColoridoLayout = new javax.swing.GroupLayout(PnlColorido);
         PnlColorido.setLayout(PnlColoridoLayout);
         PnlColoridoLayout.setHorizontalGroup(
             PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlColoridoLayout.createSequentialGroup()
-                .addGroup(PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PnlColoridoLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(imgLogo))
-                    .addGroup(PnlColoridoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PnlColoridoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PnlColoridoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PnlColoridoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnFuncionarios)))
+                .addGap(38, 38, 38)
+                .addComponent(imgLogo)
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(PnlColoridoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnFuncionarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PnlColoridoLayout.setVerticalGroup(
             PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,24 +95,24 @@ public class HomeVisao extends javax.swing.JFrame {
                 .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
-        PnlBranco.setPreferredSize(new java.awt.Dimension(465, 457));
+        pnlPrincipal.setPreferredSize(new java.awt.Dimension(437, 483));
 
-        javax.swing.GroupLayout PnlBrancoLayout = new javax.swing.GroupLayout(PnlBranco);
-        PnlBranco.setLayout(PnlBrancoLayout);
-        PnlBrancoLayout.setHorizontalGroup(
-            PnlBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
+        pnlPrincipal.setLayout(pnlPrincipalLayout);
+        pnlPrincipalLayout.setHorizontalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
         );
-        PnlBrancoLayout.setVerticalGroup(
-            PnlBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+        pnlPrincipalLayout.setVerticalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PnlGeralLayout = new javax.swing.GroupLayout(PnlGeral);
@@ -139,17 +121,17 @@ public class HomeVisao extends javax.swing.JFrame {
             PnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlGeralLayout.createSequentialGroup()
                 .addComponent(PnlColorido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PnlBranco, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PnlGeralLayout.setVerticalGroup(
             PnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PnlColorido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(PnlGeralLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(PnlBranco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,21 +154,9 @@ public class HomeVisao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVendasActionPerformed
-
-    private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProdutosActionPerformed
-
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClientesActionPerformed
-
-    private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +197,6 @@ public class HomeVisao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PnlBranco;
     private javax.swing.JPanel PnlColorido;
     private javax.swing.JPanel PnlGeral;
     private javax.swing.JButton btnClientes;
@@ -235,5 +204,27 @@ public class HomeVisao extends javax.swing.JFrame {
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnVendas;
     private javax.swing.JLabel imgLogo;
+    private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    
+    public JButton getBtnClientes() {
+        return btnClientes;
+    }
+
+    public JButton getBtnFuncionarios() {
+        return btnFuncionarios;
+    }
+
+    public JButton getBtnProdutos() {
+        return btnProdutos;
+    }
+
+    public JPanel getPnlPrincipal() {
+        return pnlPrincipal;
+    }
+
+    public JButton getBtnVendas() {
+        return btnVendas;
+    }
 }

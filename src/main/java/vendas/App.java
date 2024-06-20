@@ -1,13 +1,17 @@
 package vendas;
 
+import javax.swing.SwingUtilities;
+
 import vendas.controle.LoginControle;
 
 public class App {
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!!");
-	
-		
-		var loginControle = new LoginControle();
+		SwingUtilities.invokeLater(() -> {
+			System.out.println("SYS > INICIADO");
+			
+			
+			new LoginControle();
+		});
 	}
 }
