@@ -29,72 +29,80 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
 
         jPanel6 = new javax.swing.JPanel();
         txtDadosFuncionario = new javax.swing.JLabel();
-        txtNome4 = new javax.swing.JLabel();
-        txtCPF4 = new javax.swing.JLabel();
-        FieldNome = new javax.swing.JTextField();
-        FieldCPF = new javax.swing.JTextField();
+        txtNome = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JLabel();
+        fieldNome = new javax.swing.JTextField();
+        fieldCPF = new javax.swing.JTextField();
         txtFuncao = new javax.swing.JLabel();
-        FieldFuncao = new javax.swing.JTextField();
-        btnConfirmar4 = new javax.swing.JButton();
+        fieldFuncao = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel6.setPreferredSize(new java.awt.Dimension(437, 483));
 
         txtDadosFuncionario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtDadosFuncionario.setText("Dados do funcionário");
 
-        txtNome4.setText("Nome");
+        txtNome.setText("Nome");
 
-        txtCPF4.setText("CPF");
+        txtCPF.setText("CPF");
 
-        FieldNome.addActionListener(new java.awt.event.ActionListener() {
+        fieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldNomeActionPerformed(evt);
+                fieldNomeActionPerformed(evt);
             }
         });
 
-        FieldCPF.addActionListener(new java.awt.event.ActionListener() {
+        fieldCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldCPFActionPerformed(evt);
+                fieldCPFActionPerformed(evt);
             }
         });
 
         txtFuncao.setText("Função");
 
-        FieldFuncao.addActionListener(new java.awt.event.ActionListener() {
+        fieldFuncao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldFuncaoActionPerformed(evt);
+                fieldFuncaoActionPerformed(evt);
             }
         });
+
+        btnConfirmar.setBackground(new java.awt.Color(0, 255, 0));
+        btnConfirmar.setText("Confirmar");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtFuncao)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar)))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtDadosFuncionario)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome4)
-                            .addComponent(txtCPF4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 398, Short.MAX_VALUE))))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(FieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtFuncao)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(fieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldCPF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldFuncao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(txtDadosFuncionario)
+                                .addGap(0, 123, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,64 +110,47 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addComponent(txtDadosFuncionario)
                 .addGap(31, 31, 31)
-                .addComponent(txtNome4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtCPF4)
+                .addComponent(txtNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCPF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFuncao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        btnConfirmar4.setBackground(new java.awt.Color(0, 255, 0));
-        btnConfirmar4.setText("Confirmar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(287, Short.MAX_VALUE)
-                .addComponent(btnConfirmar4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(btnConfirmar4)
-                .addGap(46, 46, 46))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(83, Short.MAX_VALUE)))
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNomeActionPerformed
+    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldNomeActionPerformed
+    }//GEN-LAST:event_fieldNomeActionPerformed
 
-    private void FieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCPFActionPerformed
+    private void fieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCPFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldCPFActionPerformed
+    }//GEN-LAST:event_fieldCPFActionPerformed
 
-    private void FieldFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldFuncaoActionPerformed
+    private void fieldFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldFuncaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldFuncaoActionPerformed
+    }//GEN-LAST:event_fieldFuncaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,14 +195,14 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FieldCPF;
-    private javax.swing.JTextField FieldFuncao;
-    private javax.swing.JTextField FieldNome;
-    private javax.swing.JButton btnConfirmar4;
+    private javax.swing.JButton btnConfirmar;
+    private javax.swing.JTextField fieldCPF;
+    private javax.swing.JTextField fieldFuncao;
+    private javax.swing.JTextField fieldNome;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel txtCPF4;
+    private javax.swing.JLabel txtCPF;
     private javax.swing.JLabel txtDadosFuncionario;
     private javax.swing.JLabel txtFuncao;
-    private javax.swing.JLabel txtNome4;
+    private javax.swing.JLabel txtNome;
     // End of variables declaration//GEN-END:variables
 }

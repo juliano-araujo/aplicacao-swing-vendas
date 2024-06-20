@@ -29,19 +29,19 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel5 = new javax.swing.JPanel();
-        line2 = new javax.swing.JSeparator();
         txtDadosProduto = new javax.swing.JLabel();
         txtProduto = new javax.swing.JLabel();
         txtFornecedor = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbFornecedor = new javax.swing.JComboBox<>();
         txtValor = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
-        FieldQuantidade = new javax.swing.JTextField();
-        FieldProduto = new javax.swing.JTextField();
-        FieldValor = new javax.swing.JTextField();
+        fieldQuantidade = new javax.swing.JTextField();
+        fieldProduto = new javax.swing.JTextField();
+        fieldValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel5.setPreferredSize(new java.awt.Dimension(437, 483));
 
@@ -52,7 +52,11 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
 
         txtFornecedor.setText("Fornecedor");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFornecedorActionPerformed(evt);
+            }
+        });
 
         txtValor.setText("Valor");
 
@@ -61,21 +65,21 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
         btnConfirmar.setBackground(new java.awt.Color(0, 255, 0));
         btnConfirmar.setText("Confirmar");
 
-        FieldQuantidade.addActionListener(new java.awt.event.ActionListener() {
+        fieldQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldQuantidadejTextField5ActionPerformed(evt);
+                fieldQuantidadejTextField5ActionPerformed(evt);
             }
         });
 
-        FieldProduto.addActionListener(new java.awt.event.ActionListener() {
+        fieldProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldProdutojTextField6ActionPerformed(evt);
+                fieldProdutojTextField6ActionPerformed(evt);
             }
         });
 
-        FieldValor.addActionListener(new java.awt.event.ActionListener() {
+        fieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldValorjTextField7ActionPerformed(evt);
+                fieldValorjTextField7ActionPerformed(evt);
             }
         });
 
@@ -87,86 +91,80 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(line2)
-                        .addContainerGap(429, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDadosProduto)
-                            .addComponent(FieldProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtProduto)
-                            .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtValor)
-                            .addComponent(txtQuantidade))
-                        .addContainerGap(274, Short.MAX_VALUE))))
+                            .addComponent(txtQuantidade)
+                            .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(153, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldQuantidade)
+                            .addComponent(fieldValor)
+                            .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fieldProduto))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addComponent(btnConfirmar)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(txtDadosProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(line2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addComponent(txtProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FieldProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFornecedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtValor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuantidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldQuantidadejTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldQuantidadejTextField5ActionPerformed
+    private void fieldQuantidadejTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldQuantidadejTextField5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldQuantidadejTextField5ActionPerformed
+    }//GEN-LAST:event_fieldQuantidadejTextField5ActionPerformed
 
-    private void FieldProdutojTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldProdutojTextField6ActionPerformed
+    private void fieldProdutojTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProdutojTextField6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldProdutojTextField6ActionPerformed
+    }//GEN-LAST:event_fieldProdutojTextField6ActionPerformed
 
-    private void FieldValorjTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldValorjTextField7ActionPerformed
+    private void fieldValorjTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldValorjTextField7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldValorjTextField7ActionPerformed
+    }//GEN-LAST:event_fieldValorjTextField7ActionPerformed
+
+    private void cbFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,27 +209,14 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FieldProduto;
-    private javax.swing.JTextField FieldQuantidade;
-    private javax.swing.JTextField FieldValor;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnContinuar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> cbFornecedor;
+    private javax.swing.JTextField fieldProduto;
+    private javax.swing.JTextField fieldQuantidade;
+    private javax.swing.JTextField fieldValor;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JSeparator line;
-    private javax.swing.JSeparator line2;
     private javax.swing.JLabel txtDadosProduto;
     private javax.swing.JLabel txtFornecedor;
-    private javax.swing.JLabel txtFuncionarios;
     private javax.swing.JLabel txtProduto;
     private javax.swing.JLabel txtQuantidade;
     private javax.swing.JLabel txtValor;
