@@ -1,5 +1,17 @@
 package vendas.visao;
 
+import java.text.ParseException;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.JSpinner.DefaultEditor;
+
+import vendas.controle.FormularioProdutoControle.FornecedorComboItem;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -36,9 +48,9 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
         txtValor = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
-        fieldQuantidade = new javax.swing.JTextField();
         fieldProduto = new javax.swing.JTextField();
         fieldValor = new javax.swing.JTextField();
+        spinnerQuantidade = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -52,36 +64,12 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
 
         txtFornecedor.setText("Fornecedor");
 
-        cbFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbFornecedorActionPerformed(evt);
-            }
-        });
-
         txtValor.setText("Valor");
 
         txtQuantidade.setText("Quantidade");
 
         btnConfirmar.setBackground(new java.awt.Color(0, 255, 0));
         btnConfirmar.setText("Confirmar");
-
-        fieldQuantidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldQuantidadejTextField5ActionPerformed(evt);
-            }
-        });
-
-        fieldProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldProdutojTextField6ActionPerformed(evt);
-            }
-        });
-
-        fieldValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldValorjTextField7ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -90,6 +78,9 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldValor)
+                    .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fieldProduto)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDadosProduto)
@@ -97,25 +88,19 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
                             .addComponent(txtValor)
                             .addComponent(txtQuantidade)
                             .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(153, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldQuantidade)
-                            .addComponent(fieldValor)
-                            .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fieldProduto))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConfirmar)
+                        .addGap(0, 147, Short.MAX_VALUE))
+                    .addComponent(spinnerQuantidade)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(txtDadosProduto)
-                .addGap(30, 30, 30)
+                .addGap(31, 31, 31)
                 .addComponent(txtProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,8 +114,8 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
                 .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuantidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(spinnerQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -144,27 +129,11 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 308, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fieldQuantidadejTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldQuantidadejTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldQuantidadejTextField5ActionPerformed
-
-    private void fieldProdutojTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProdutojTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldProdutojTextField6ActionPerformed
-
-    private void fieldValorjTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldValorjTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldValorjTextField7ActionPerformed
-
-    private void cbFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFornecedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,15 +179,49 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JComboBox<String> cbFornecedor;
+    private javax.swing.JComboBox<FornecedorComboItem> cbFornecedor;
     private javax.swing.JTextField fieldProduto;
-    private javax.swing.JTextField fieldQuantidade;
     private javax.swing.JTextField fieldValor;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JSpinner spinnerQuantidade;
     private javax.swing.JLabel txtDadosProduto;
     private javax.swing.JLabel txtFornecedor;
     private javax.swing.JLabel txtProduto;
     private javax.swing.JLabel txtQuantidade;
     private javax.swing.JLabel txtValor;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnConfirmar() {
+        return btnConfirmar;
+    }
+
+    public JComboBox<FornecedorComboItem> getCbFornecedor() {
+        return cbFornecedor;
+    }
+
+    public JTextField getFieldProduto() {
+        return fieldProduto;
+    }
+
+    public JTextField getFieldValor() {
+        return fieldValor;
+    }
+
+    public JSpinner getSpinnerQuantidade() {
+        return spinnerQuantidade;
+    }
+    
+	public int getSpinnerQuantidadeValue() {
+		var spinner = this.getSpinnerQuantidade();
+		try {
+			spinner.commitEdit();
+		}
+		catch (ParseException pe) {
+			JComponent editor = spinner.getEditor();
+			if (editor instanceof DefaultEditor) {
+				((DefaultEditor)editor).getTextField().setValue(spinner.getValue());
+			}
+		}
+		return (int) spinner.getValue();
+	}
 }

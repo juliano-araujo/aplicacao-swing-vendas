@@ -40,18 +40,13 @@ public class VendaControle {
 		this.view.setVisible(true);
 	}
 
-	private List<Pessoa> carregarPessoas() {
-		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
-
-		List<Pessoa> list = sessionFactory.fromSession(session -> {
-			return session.createSelectionQuery("from Pessoa", Pessoa.class).getResultList();
-		});
-
-		return list;
-	}
 
 	private void loadData() {
-		List<Pessoa> pessoaList = carregarPessoas();
+		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
+
+		List<Pessoa> pessoaList = sessionFactory.fromSession(session -> {
+			return session.createSelectionQuery("from Pessoa", Pessoa.class).getResultList();
+		});
 
 		PessoaComboItem[] comboClienteArr = pessoaList.stream()
 				.map(PessoaComboItem::new)

@@ -30,6 +30,17 @@ public class Fornecedor {
 
 	public String getDescricao() {
 		return descricao;
-	}	
-	
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 }

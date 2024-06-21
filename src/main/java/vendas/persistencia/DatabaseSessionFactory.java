@@ -1,10 +1,14 @@
 package vendas.persistencia;
 
+import java.util.function.Consumer;
+
 import org.hibernate.HibernateException;
 import org.hibernate.JDBCException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 
 import vendas.modelo.Fornecedor;
 import vendas.modelo.Item;
@@ -21,6 +25,22 @@ public class DatabaseSessionFactory {
 		}
 		
 		return sessionFactory;
+	}
+	
+	public static void inTransaction(Consumer<Session> action) throws DatabaseException {
+		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
+		
+		try {
+			sessionFactory.inTransaction(action);
+		} catch (ConstraintViolationException e) {
+			e.printStackTrace();
+			
+			throw new ConstraintException("A operação não é possível devido à uma validação do banco de dados", e);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			
+			throw new DatabaseException("Ocorreu um erro na operação do banco de dados");
+		}
 	}
 	
 	public static boolean createSessionFactory(String username, String password) throws CredentialException {

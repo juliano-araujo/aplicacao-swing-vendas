@@ -2,15 +2,12 @@ package vendas.controle;
 
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,20 +69,6 @@ public class AdicionarProdutoControle {
 		});
 	}
 	
-	private int getSpinnerValue() {
-		var spinner = this.view.getSpinnerQuantidade();
-		try {
-			spinner.commitEdit();
-		}
-		catch (ParseException pe) {
-			JComponent editor = spinner.getEditor();
-			if (editor instanceof DefaultEditor) {
-				((DefaultEditor)editor).getTextField().setValue(spinner.getValue());
-			}
-		}
-		return (int) spinner.getValue();
-	}
-	
 	private void btnContinuar(ActionEvent event) {
 		JTable table = this.view.getTable();
 		
@@ -99,7 +82,7 @@ public class AdicionarProdutoControle {
 		
 		var produto = produtoList.get(selectedRow);
 
-		Integer quantidade = this.getSpinnerValue();
+		Integer quantidade = this.view.getSpinnerQuantidadeValue();
 		 
 		this.listener.accept(produto, quantidade);
 		

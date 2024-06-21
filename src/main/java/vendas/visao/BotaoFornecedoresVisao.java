@@ -10,14 +10,14 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Luis
+ * @author Jujuba
  */
-public class BotaoClientesVisao extends javax.swing.JPanel {
+public class BotaoFornecedoresVisao extends javax.swing.JPanel {
 
     /**
-     * Creates new form VisaoClientes
+     * Creates new form Teste
      */
-    public BotaoClientesVisao() {
+    public BotaoFornecedoresVisao() {
         initComponents();
     }
 
@@ -30,47 +30,15 @@ public class BotaoClientesVisao extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        line = new javax.swing.JSeparator();
-        txtClientes = new javax.swing.JLabel();
-        scroll = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        btnRemover = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        scroll = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        line = new javax.swing.JSeparator();
+        txtFrnecedores = new javax.swing.JLabel();
 
-        txtClientes.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        txtClientes.setText("Clientes");
-
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nome", "CPF"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        table.setShowGrid(true);
-        scroll.setViewportView(table);
-
-        btnRemover.setBackground(new java.awt.Color(255, 0, 0));
-        btnRemover.setText("Remover");
+        setPreferredSize(new java.awt.Dimension(437, 483));
 
         btnAdicionar.setBackground(new java.awt.Color(0, 255, 0));
         btnAdicionar.setText("Adicionar");
@@ -88,6 +56,40 @@ public class BotaoClientesVisao extends javax.swing.JPanel {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(255, 0, 0));
+        btnRemover.setText("Remover");
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        table.setShowGrid(true);
+        scroll.setViewportView(table);
+
+        txtFrnecedores.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        txtFrnecedores.setText("Fornecedores");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,34 +97,37 @@ public class BotaoClientesVisao extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(line)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtClientes)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAtualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemover)))
+                        .addComponent(txtFrnecedores)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(line)
+                            .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdicionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAtualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemover)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtClientes)
+                .addContainerGap()
+                .addComponent(txtFrnecedores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
                     .addComponent(btnAtualizar)
                     .addComponent(btnRemover))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -143,7 +148,7 @@ public class BotaoClientesVisao extends javax.swing.JPanel {
     private javax.swing.JSeparator line;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTable table;
-    private javax.swing.JLabel txtClientes;
+    private javax.swing.JLabel txtFrnecedores;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnAdicionar() {
@@ -165,4 +170,6 @@ public class BotaoClientesVisao extends javax.swing.JPanel {
     public DefaultTableModel getTableModel() {
         return (DefaultTableModel) table.getModel();
     }
+    
+
 }

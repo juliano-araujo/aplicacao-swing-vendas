@@ -82,8 +82,9 @@ public class BotaoProdutosVisao extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        table.setCellSelectionEnabled(true);
         table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setRowSelectionAllowed(true);
+        table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.setShowGrid(true);
         scroll.setViewportView(table);
 

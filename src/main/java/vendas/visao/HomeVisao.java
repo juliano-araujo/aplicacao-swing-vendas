@@ -36,6 +36,7 @@ public class HomeVisao extends javax.swing.JFrame {
         btnProdutos = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnFuncionarios = new javax.swing.JButton();
+        btnFornecedores = new javax.swing.JButton();
         pnlPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -69,6 +70,10 @@ public class HomeVisao extends javax.swing.JFrame {
         btnFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnFuncionarios.setText("Funcionários");
 
+        btnFornecedores.setBackground(new java.awt.Color(204, 204, 204));
+        btnFornecedores.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnFornecedores.setText("Fornecedores");
+
         javax.swing.GroupLayout PnlColoridoLayout = new javax.swing.GroupLayout(PnlColorido);
         PnlColorido.setLayout(PnlColoridoLayout);
         PnlColoridoLayout.setHorizontalGroup(
@@ -79,11 +84,12 @@ public class HomeVisao extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(PnlColoridoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnFuncionarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PnlColoridoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PnlColoridoLayout.setVerticalGroup(
@@ -96,10 +102,12 @@ public class HomeVisao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlPrincipal.setPreferredSize(new java.awt.Dimension(437, 483));
@@ -112,7 +120,7 @@ public class HomeVisao extends javax.swing.JFrame {
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 483, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PnlGeralLayout = new javax.swing.GroupLayout(PnlGeral);
@@ -152,6 +160,7 @@ public class HomeVisao extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
@@ -200,6 +209,7 @@ public class HomeVisao extends javax.swing.JFrame {
     private javax.swing.JPanel PnlColorido;
     private javax.swing.JPanel PnlGeral;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnFornecedores;
     private javax.swing.JButton btnFuncionarios;
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnVendas;
@@ -213,7 +223,7 @@ public class HomeVisao extends javax.swing.JFrame {
     }
 
     public JButton getBtnFuncionarios() {
-        return btnFuncionarios;
+        return btnFornecedores;
     }
 
     public JButton getBtnProdutos() {
@@ -226,5 +236,9 @@ public class HomeVisao extends javax.swing.JFrame {
 
     public JButton getBtnVendas() {
         return btnVendas;
+    }
+
+    public JButton getBtnFornecedores() {
+        return btnFornecedores;
     }
 }

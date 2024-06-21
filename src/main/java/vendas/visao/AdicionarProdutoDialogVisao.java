@@ -4,7 +4,11 @@
  */
 package vendas.visao;
 
+import java.text.ParseException;
+
 import javax.swing.DefaultListModel;
+import javax.swing.JComponent;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -159,6 +163,7 @@ public class AdicionarProdutoDialogVisao extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -241,5 +246,19 @@ public class AdicionarProdutoDialogVisao extends javax.swing.JDialog {
 	
 	public DefaultTableModel getTableModel() {
 		return (DefaultTableModel) table.getModel();
+	}
+	
+	public int getSpinnerQuantidadeValue() {
+		var spinner = this.getSpinnerQuantidade();
+		try {
+			spinner.commitEdit();
+		}
+		catch (ParseException pe) {
+			JComponent editor = spinner.getEditor();
+			if (editor instanceof DefaultEditor) {
+				((DefaultEditor)editor).getTextField().setValue(spinner.getValue());
+			}
+		}
+		return (int) spinner.getValue();
 	}
 }

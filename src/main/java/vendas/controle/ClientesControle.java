@@ -7,22 +7,21 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
-import vendas.modelo.Produto;
+import vendas.modelo.Pessoa;
 import vendas.persistencia.ConstraintException;
 import vendas.persistencia.DatabaseException;
 import vendas.persistencia.DatabaseSessionFactory;
-import vendas.utils.FormatUtils;
-import vendas.visao.BotaoProdutosVisao;
+import vendas.visao.BotaoClientesVisao;
 
-public class ProdutosControle {
-	private BotaoProdutosVisao view;
+public class ClientesControle {
+	private BotaoClientesVisao view;
 	
-	private List<Produto> list;
+	private List<Pessoa> list;
 
-	public ProdutosControle() {
-		this.view = new BotaoProdutosVisao();
+	public ClientesControle() {
+		this.view = new BotaoClientesVisao();
 
-		this.list = new ArrayList<Produto>();
+		this.list = new ArrayList<Pessoa>();
 
 		this.initComponents();
 		this.bindEvents();
@@ -43,8 +42,8 @@ public class ProdutosControle {
 	private void loadData() {
 		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
 
-		List<Produto> produtosList = sessionFactory.fromSession(session -> {
-			return session.createSelectionQuery("select produto from Produto as produto join fetch produto.fornecedor", Produto.class)
+		List<Pessoa> clientesList = sessionFactory.fromSession(session -> {
+			return session.createSelectionQuery("from Pessoa where funcao is null", Pessoa.class)
 					.getResultList();
 		});
 
@@ -52,16 +51,14 @@ public class ProdutosControle {
 		
 		model.setRowCount(0);
 		
-		produtosList.forEach(produto -> {
+		clientesList.forEach(cliente -> {
 			model.addRow(new Object[] {
-					produto.getCodigo(),
-					produto.getDescricao(),
-					produto.getFornecedor().getDescricao(),
-					FormatUtils.toMonetaryString(produto.getValor()),
-					produto.getQuantidade()
+					cliente.getCodigo(),
+					cliente.getNome(),
+					cliente.getCpf()
 			});
 			
-			this.list.add(produto);
+			this.list.add(cliente);
 		});
 	}
 
@@ -92,15 +89,15 @@ public class ProdutosControle {
 		
 		int selectedRow = this.view.getTable().getSelectedRow();
 		
-		var produto = this.list.get(selectedRow);
+		var cliente = this.list.get(selectedRow);
 		
 		try {
 			DatabaseSessionFactory.inTransaction(session -> {
-				session.remove(produto);
+				session.remove(cliente);
 			});
 		} catch (DatabaseException e) {
 			if (e instanceof ConstraintException) {
-				JOptionPane.showMessageDialog(view, "Existem vendas feitas com essa produto, portanto não é possível excluí-lo", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(view, "Existem vendas feitas com essa cliente, portanto não é possível excluí-lo", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
 			
 				return;
 			}
@@ -110,13 +107,13 @@ public class ProdutosControle {
 			return;
 		}
 		
-		JOptionPane.showMessageDialog(view, "Produto excluído", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(view, "Cliente excluído", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
 		
 		this.list.remove(selectedRow);
 		this.view.getTableModel().removeRow(selectedRow);
 	}
 
-	public BotaoProdutosVisao getView() {
+	public BotaoClientesVisao getView() {
 		return view;
 	}
 }

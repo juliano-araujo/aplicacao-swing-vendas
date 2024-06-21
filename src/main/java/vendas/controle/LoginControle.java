@@ -1,6 +1,8 @@
 package vendas.controle;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -24,7 +26,23 @@ public class LoginControle {
 	
 	
 	private void bindEvents() {
-		view.getBtnEntrar().addActionListener(this::btnEntrar);
+		this.view.getBtnEntrar().addActionListener(this::btnEntrarAction);
+		
+		this.view.getBtnEntrar().addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				btnEntrarKey(e);
+			}
+		});
 	}
 	
 	private void cleanPasswordArray(char[] arr) {
@@ -33,7 +51,20 @@ public class LoginControle {
 		}
 	}
 	
-	private void btnEntrar(ActionEvent event) {
+	
+	private void btnEntrarAction(ActionEvent event) {
+		this.login();
+	}
+	
+	private void btnEntrarKey(KeyEvent event) {
+		if (event.getKeyCode() != KeyEvent.VK_ENTER) {
+			return;
+		}
+		
+		this.login();
+	}
+	
+	private void login() {
 		System.out.println("BTN > Entrar");
 		
 		var username = this.view.getTxtLogin().getText().strip();
