@@ -4,6 +4,9 @@
  */
 package vendas.visao;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author gabri
@@ -205,4 +208,21 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
     private javax.swing.JLabel txtFuncao;
     private javax.swing.JLabel txtNome;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnConfirmar() {
+        return btnConfirmar;
+    }
+
+    public JTextField getFieldCPF() {
+        return fieldCPF;
+    }
+
+    public JTextField getFieldFuncao() {
+        return fieldFuncao;
+    }
+
+    public JTextField getFieldNome() {
+        return fieldNome;
+    }
+
 }

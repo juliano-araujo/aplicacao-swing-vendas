@@ -4,6 +4,9 @@
  */
 package vendas.visao;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author gabri
@@ -29,14 +32,13 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
 
         jPanel6 = new javax.swing.JPanel();
         txtDadosFuncionario = new javax.swing.JLabel();
-        txtNome4 = new javax.swing.JLabel();
-        txtCPF4 = new javax.swing.JLabel();
-        FieldNome4 = new javax.swing.JTextField();
-        FieldCPF4 = new javax.swing.JTextField();
-        btnConfirmar4 = new javax.swing.JButton();
+        txtNome = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JLabel();
+        fieldNome = new javax.swing.JTextField();
+        fieldCPF = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(283, 203));
         setResizable(false);
 
         jPanel6.setPreferredSize(new java.awt.Dimension(437, 483));
@@ -44,24 +46,24 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
         txtDadosFuncionario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtDadosFuncionario.setText("Dados do cliente");
 
-        txtNome4.setText("Nome");
+        txtNome.setText("Nome");
 
-        txtCPF4.setText("CPF");
+        txtCPF.setText("CPF");
 
-        FieldNome4.addActionListener(new java.awt.event.ActionListener() {
+        fieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldNome4ActionPerformed(evt);
+                fieldNomeActionPerformed(evt);
             }
         });
 
-        FieldCPF4.addActionListener(new java.awt.event.ActionListener() {
+        fieldCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldCPF4ActionPerformed(evt);
+                fieldCPFActionPerformed(evt);
             }
         });
 
-        btnConfirmar4.setBackground(new java.awt.Color(0, 255, 0));
-        btnConfirmar4.setText("Confirmar");
+        btnConfirmar.setBackground(new java.awt.Color(0, 255, 0));
+        btnConfirmar.setText("Confirmar");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -72,19 +74,19 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome4)
-                            .addComponent(txtCPF4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNome)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(FieldNome4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldNome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(txtDadosFuncionario)
                                 .addGap(0, 156, Short.MAX_VALUE))
-                            .addComponent(FieldCPF4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldCPF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnConfirmar4)))
+                                .addComponent(btnConfirmar)))
                         .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
@@ -93,15 +95,15 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addComponent(txtDadosFuncionario)
                 .addGap(31, 31, 31)
-                .addComponent(txtNome4)
+                .addComponent(txtNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FieldNome4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(txtCPF4)
+                .addComponent(txtCPF)
                 .addGap(5, 5, 5)
-                .addComponent(FieldCPF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnConfirmar4)
+                .addComponent(btnConfirmar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -119,13 +121,13 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldNome4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNome4ActionPerformed
+    private void fieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCPFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldNome4ActionPerformed
+    }//GEN-LAST:event_fieldCPFActionPerformed
 
-    private void FieldCPF4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCPF4ActionPerformed
+    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldCPF4ActionPerformed
+    }//GEN-LAST:event_fieldNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,12 +172,27 @@ public class FormularioClienteVisao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FieldCPF4;
-    private javax.swing.JTextField FieldNome4;
-    private javax.swing.JButton btnConfirmar4;
+    private javax.swing.JButton btnConfirmar;
+    private javax.swing.JTextField fieldCPF;
+    private javax.swing.JTextField fieldNome;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel txtCPF4;
+    private javax.swing.JLabel txtCPF;
     private javax.swing.JLabel txtDadosFuncionario;
-    private javax.swing.JLabel txtNome4;
+    private javax.swing.JLabel txtNome;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnConfirmar() {
+        return btnConfirmar;
+    }
+
+    public JTextField getFieldCPF() {
+        return fieldCPF;
+    }
+
+    public JTextField getFieldNome() {
+        return fieldNome;
+    }
+
+
 }
+
