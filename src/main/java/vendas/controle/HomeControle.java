@@ -13,6 +13,7 @@ public class HomeControle {
 	private ProdutosControle produtosControle;
 	private FornecedoresControle fornecedoresControle;
 	private ClientesControle clientesControle;
+	private FuncionariosControle funcionariosControle;
 	
 	public HomeControle() {
 		this.view = new HomeVisao();
@@ -21,6 +22,7 @@ public class HomeControle {
 		this.produtosControle = new ProdutosControle();
 		this.fornecedoresControle = new FornecedoresControle();
 		this.clientesControle = new ClientesControle();
+		this.funcionariosControle = new FuncionariosControle();
 	
 		this.bindEvents();
 		this.view.setVisible(true);
@@ -62,6 +64,11 @@ public class HomeControle {
 	
 	private void btnFuncionarios(ActionEvent event) {
 		System.out.println("BTN > Funcionários");
+		
+		var view = this.funcionariosControle.getView();
+		this.setPnlPrincipal(view);
+		
+		this.funcionariosControle.activate();
 	}
 	
 	private void btnClientes(ActionEvent event) {

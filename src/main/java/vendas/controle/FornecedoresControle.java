@@ -150,8 +150,10 @@ public class FornecedoresControle {
 		
 		JOptionPane.showMessageDialog(view, "Fornecedor alterado", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
 
-		this.view.getTableModel().removeRow(selectedRow);
-		this.view.getTableModel().insertRow(selectedRow, new Object[] {
+		var tableModel = this.view.getTableModel();
+		
+		tableModel.removeRow(selectedRow);
+		tableModel.insertRow(selectedRow, new Object[] {
 				fornecedor.getCodigo(),
 				fornecedor.getDescricao()
 		});

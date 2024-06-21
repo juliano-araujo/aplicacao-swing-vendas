@@ -4,6 +4,8 @@
  */
 package vendas.visao;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Luis
@@ -144,4 +146,23 @@ public class BotaoFuncionariosVisao extends javax.swing.JPanel {
     private javax.swing.JTable table;
     private javax.swing.JLabel txtFuncionarios;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JButton getBtnAdicionar() {
+		return btnAdicionar;
+	}
+
+	public javax.swing.JButton getBtnAtualizar() {
+		return btnAtualizar;
+	}
+
+	public javax.swing.JButton getBtnRemover() {
+		return btnRemover;
+	}
+
+	public javax.swing.JTable getTable() {
+		return table;
+	}
+    
+	public DefaultTableModel getTableModel() {
+		return (DefaultTableModel) table.getModel();
+	}
 }

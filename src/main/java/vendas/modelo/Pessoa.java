@@ -2,8 +2,6 @@ package vendas.modelo;
 
 import java.util.List;
 
-import org.hibernate.annotations.NaturalId;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +16,6 @@ public class Pessoa {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer codigo;
 	
-	@NaturalId
 	@Column(length = 14) 
 	String cpf;
 	

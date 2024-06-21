@@ -13,15 +13,15 @@ import vendas.modelo.Pessoa;
 import vendas.persistencia.ConstraintException;
 import vendas.persistencia.DatabaseException;
 import vendas.persistencia.DatabaseSessionFactory;
-import vendas.visao.BotaoClientesVisao;
+import vendas.visao.BotaoFuncionariosVisao;
 
-public class ClientesControle {
-	private BotaoClientesVisao view;
+public class FuncionariosControle {
+	private BotaoFuncionariosVisao view;
 	
 	private List<Pessoa> list;
 
-	public ClientesControle() {
-		this.view = new BotaoClientesVisao();
+	public FuncionariosControle() {
+		this.view = new BotaoFuncionariosVisao();
 
 		this.list = new ArrayList<Pessoa>();
 
@@ -44,8 +44,8 @@ public class ClientesControle {
 	private void loadData() {
 		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
 
-		List<Pessoa> clientesList = sessionFactory.fromSession(session -> {
-			return session.createSelectionQuery("from Pessoa where funcao is null", Pessoa.class)
+		List<Pessoa> funcionariosList = sessionFactory.fromSession(session -> {
+			return session.createSelectionQuery("from Pessoa where funcao is not null", Pessoa.class)
 					.getResultList();
 		});
 
@@ -53,14 +53,15 @@ public class ClientesControle {
 		
 		model.setRowCount(0);
 		
-		clientesList.forEach(cliente -> {
+		funcionariosList.forEach(funcionario -> {
 			model.addRow(new Object[] {
-					cliente.getCodigo(),
-					cliente.getNome(),
-					cliente.getCpf()
+					funcionario.getCodigo(),
+					funcionario.getNome(),
+					funcionario.getCpf(),
+					funcionario.getFuncao()
 			});
 			
-			this.list.add(cliente);
+			this.list.add(funcionario);
 		});
 	}
 
@@ -72,11 +73,67 @@ public class ClientesControle {
 		this.view.getTable().getSelectionModel().addListSelectionListener(this::tableSelect);
 	}
 	
+	private void insertFuncionario(Pessoa funcionario) {
+		try {
+			DatabaseSessionFactory.inTransaction(session -> {
+				session.persist(funcionario);
+			});
+		} catch (DatabaseException e) {
+			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
+
+			return;
+		}
+
+		JOptionPane.showMessageDialog(view, "Funcionario Inserido", "Operação concluída", JOptionPane.INFORMATION_MESSAGE);
+		
+		var model = this.view.getTableModel();
+		
+		this.list.add(funcionario);
+		
+		model.addRow(new Object[] {
+				funcionario.getCodigo(),
+				funcionario.getNome(),
+				funcionario.getCpf(),
+				funcionario.getFuncao()
+		});
+	}
+	
+	private void updateFuncionario(Pessoa newFuncionario) {
+		int selectedRow = this.view.getTable().getSelectedRow();
+
+		var oldFuncionario = this.list.get(selectedRow);
+		
+		newFuncionario.setCodigo(oldFuncionario.getCodigo());
+		
+		try {
+			DatabaseSessionFactory.inTransaction(session -> {
+				session.merge(newFuncionario);
+			});
+		} catch (DatabaseException e) {
+			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
+
+			return;
+		}
+		
+		JOptionPane.showMessageDialog(view, "Funcionario alterado", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
+		
+		this.list.set(selectedRow, newFuncionario);
+		
+		var tableModel = this.view.getTableModel();
+		tableModel.removeRow(selectedRow);
+		tableModel.insertRow(selectedRow, new Object[] {
+				newFuncionario.getCodigo(),
+				newFuncionario.getNome(),
+				newFuncionario.getCpf(),
+				newFuncionario.getFuncao()
+		});
+	}
+	
 	private void tableSelect(ListSelectionEvent event) {
 		if (this.view.getTable().getSelectionModel().isSelectionEmpty()) {
 			this.view.getBtnAtualizar().setEnabled(false);
 			this.view.getBtnRemover().setEnabled(false);
-			
+
 			return;
 		}
 		
@@ -86,60 +143,6 @@ public class ClientesControle {
 		return;
 	}
 	
-	private void insertCliente(Pessoa cliente) {
-		try {
-			DatabaseSessionFactory.inTransaction(session -> {
-				session.persist(cliente);
-			});
-		} catch (DatabaseException e) {
-			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
-
-			return;
-		}
-
-		JOptionPane.showMessageDialog(view, "Cliente Inserido", "Operação concluída", JOptionPane.INFORMATION_MESSAGE);
-		
-		var model = this.view.getTableModel();
-		
-		this.list.add(cliente);
-		
-		model.addRow(new Object[] {
-				cliente.getCodigo(),
-				cliente.getNome(),
-				cliente.getCpf(),
-		});
-	}
-	
-	private void updateCliente(Pessoa newCliente) {
-		int selectedRow = this.view.getTable().getSelectedRow();
-
-		var oldCliente = this.list.get(selectedRow);
-		
-		newCliente.setCodigo(oldCliente.getCodigo());
-		
-		try {
-			DatabaseSessionFactory.inTransaction(session -> {
-				session.merge(newCliente);
-			});
-		} catch (DatabaseException e) {
-			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
-
-			return;
-		}
-		
-		JOptionPane.showMessageDialog(view, "Cliente alterado", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
-		
-		this.list.set(selectedRow, newCliente);
-		
-		var tableModel = this.view.getTableModel();
-		tableModel.removeRow(selectedRow);
-		tableModel.insertRow(selectedRow, new Object[] {
-				newCliente.getCodigo(),
-				newCliente.getNome(),
-				newCliente.getCpf(),
-		});
-	}
-	
 	public void btnRemover(ActionEvent event) {
 		if (this.view.getTable().getSelectionModel().isSelectionEmpty()) {
 			return;
@@ -147,15 +150,15 @@ public class ClientesControle {
 		
 		int selectedRow = this.view.getTable().getSelectedRow();
 		
-		var cliente = this.list.get(selectedRow);
+		var funcionario = this.list.get(selectedRow);
 		
 		try {
 			DatabaseSessionFactory.inTransaction(session -> {
-				session.remove(cliente);
+				session.remove(funcionario);
 			});
 		} catch (DatabaseException e) {
 			if (e instanceof ConstraintException) {
-				JOptionPane.showMessageDialog(view, "Existem vendas feitas com essa cliente, portanto não é possível excluí-lo", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(view, "Existem vendas feitas com essa funcionario, portanto não é possível excluí-lo", "Operação cancelada", JOptionPane.WARNING_MESSAGE);
 			
 				return;
 			}
@@ -165,15 +168,15 @@ public class ClientesControle {
 			return;
 		}
 		
-		JOptionPane.showMessageDialog(view, "Cliente excluído", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(view, "Funcionario excluído", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
 		
 		this.list.remove(selectedRow);
 		this.view.getTableModel().removeRow(selectedRow);
 	}
-	
+
 	public void btnAdicionar(ActionEvent event) {
 		JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this.view);
-		new FormularioClienteControle(mainFrame, this::insertCliente);
+		new FormularioFuncionarioControle(mainFrame, this::insertFuncionario);
 	}
 	
 	public void btnAtualizar(ActionEvent event) {
@@ -183,13 +186,13 @@ public class ClientesControle {
 		
 		int selectedRow = this.view.getTable().getSelectedRow();
 
-		var cliente = this.list.get(selectedRow);
+		var funcionario = this.list.get(selectedRow);
 
 		JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this.view);
-		new FormularioClienteControle(mainFrame, cliente, this::updateCliente);
+		new FormularioFuncionarioControle(mainFrame, funcionario, this::updateFuncionario);
 	}
-
-	public BotaoClientesVisao getView() {
+	
+	public BotaoFuncionariosVisao getView() {
 		return view;
 	}
 }

@@ -223,7 +223,7 @@ public class HomeVisao extends javax.swing.JFrame {
     }
 
     public JButton getBtnFuncionarios() {
-        return btnFornecedores;
+        return btnFuncionarios;
     }
 
     public JButton getBtnProdutos() {

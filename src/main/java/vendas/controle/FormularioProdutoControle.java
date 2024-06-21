@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -15,29 +16,38 @@ import org.apache.commons.lang3.StringUtils;
 import vendas.modelo.Fornecedor;
 import vendas.modelo.Produto;
 import vendas.persistencia.DatabaseSessionFactory;
+import vendas.utils.FormatUtils;
 import vendas.visao.FormularioProdutoVisao;
 
 public class FormularioProdutoControle {
 	private FormularioProdutoVisao view;
 	
+	private Produto produto;
 	private Consumer<Produto> listener;
 	
-	public FormularioProdutoControle(Frame frame, Consumer<Produto> listener) {
+	
+	public FormularioProdutoControle(Frame frame, Produto produto, Consumer<Produto> listener) {
 		this.view = new FormularioProdutoVisao(frame, true);
 		
+		this.produto = produto;		
 		this.listener = listener; 
 		
-		this.loadData();
+		this.initComponents();
 		this.bindEvents();
 		
 		this.view.setVisible(true);
 	}
 	
+	public FormularioProdutoControle(Frame frame, Consumer<Produto> listener) {
+		this(frame, null, listener);
+	}
+
 	private void bindEvents() {
 		this.view.getBtnConfirmar().addActionListener(this::btnConfirmar);
 	}
 
-	private void loadData() {
+	
+	private void initComponents() {
 		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
 		
 		List<Fornecedor> fornecedorList = sessionFactory.fromSession(session -> {
@@ -53,6 +63,22 @@ public class FormularioProdutoControle {
 		JComboBox<FornecedorComboItem> cbFornecedor = this.view.getCbFornecedor();
 		cbFornecedor.setModel(new DefaultComboBoxModel<FornecedorComboItem>(comboFornecedorArr));
 		cbFornecedor.setSelectedIndex(-1);
+		
+		if (this.produto == null)
+			return;
+		
+		String valorStr = FormatUtils.toMonetaryString(this.produto.getValor(), false);
+		
+		this.view.getFieldProduto().setText(this.produto.getDescricao());
+		this.view.getSpinnerQuantidade().setValue(this.produto.getQuantidade());
+		this.view.getFieldValor().setText(valorStr);
+		
+		int listIndex = IntStream.range(0, fornecedorList.size())
+				.filter(i -> fornecedorList.get(i).getCodigo().equals(this.produto.getFornecedor().getCodigo()))
+				.findAny()
+				.orElse(-1);
+
+		cbFornecedor.setSelectedIndex(listIndex);
 	}
 	
 	private void btnConfirmar(ActionEvent event) {

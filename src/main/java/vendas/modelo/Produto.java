@@ -42,6 +42,10 @@ public class Produto {
 	public Integer getCodigo() {
 		return codigo;
 	}
+	
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getDescricao() {
 		return descricao;

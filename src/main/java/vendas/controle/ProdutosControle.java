@@ -101,11 +101,43 @@ public class ProdutosControle {
 		});
 	}
 	
+	private void updateProduto(Produto newProduto) {
+		int selectedRow = this.view.getTable().getSelectedRow();
+
+		var oldProduto = this.list.get(selectedRow);
+		
+		newProduto.setCodigo(oldProduto.getCodigo());
+		
+		try {
+			DatabaseSessionFactory.inTransaction(session -> {
+				session.merge(newProduto);
+			});
+		} catch (DatabaseException e) {
+			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
+
+			return;
+		}
+		
+		JOptionPane.showMessageDialog(view, "Produto alterado", "Operação concluída com sucesso", JOptionPane.INFORMATION_MESSAGE);
+		
+		this.list.set(selectedRow, newProduto);
+		
+		var tableModel = this.view.getTableModel();
+		tableModel.removeRow(selectedRow);
+		tableModel.insertRow(selectedRow, new Object[] {
+				newProduto.getCodigo(),
+				newProduto.getDescricao(),
+				newProduto.getFornecedor().getDescricao(),
+				FormatUtils.toMonetaryString(newProduto.getValor()),
+				newProduto.getQuantidade()
+		});
+	}
+	
 	private void tableSelect(ListSelectionEvent event) {
 		if (this.view.getTable().getSelectionModel().isSelectionEmpty()) {
 			this.view.getBtnAtualizar().setEnabled(false);
 			this.view.getBtnRemover().setEnabled(false);
-			
+
 			return;
 		}
 		
@@ -152,8 +184,16 @@ public class ProdutosControle {
 	}
 	
 	public void btnAtualizar(ActionEvent event) {
+		if (this.view.getTable().getSelectionModel().isSelectionEmpty()) {
+			return;
+		}
+		
+		int selectedRow = this.view.getTable().getSelectedRow();
+
+		var produto = this.list.get(selectedRow);
+
 		JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this.view);
-//		new FormularioProdutoControle(mainFrame, this::updateProduto);
+		new FormularioProdutoControle(mainFrame, produto, this::updateProduto);
 	}
 	
 	public BotaoProdutosVisao getView() {

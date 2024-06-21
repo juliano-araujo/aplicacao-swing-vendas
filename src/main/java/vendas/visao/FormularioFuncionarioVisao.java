@@ -104,7 +104,7 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
                             .addComponent(fieldFuncao, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(txtDadosFuncionario)
-                                .addGap(0, 123, Short.MAX_VALUE)))
+                                .addGap(0, 128, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
@@ -141,6 +141,7 @@ public class FormularioFuncionarioVisao extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed

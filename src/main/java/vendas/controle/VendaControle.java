@@ -18,6 +18,7 @@ import vendas.modelo.Item;
 import vendas.modelo.Pessoa;
 import vendas.modelo.Produto;
 import vendas.modelo.Venda;
+import vendas.persistencia.DatabaseException;
 import vendas.persistencia.DatabaseSessionFactory;
 import vendas.utils.FormatUtils;
 import vendas.visao.BotaoVendasVisao;
@@ -195,12 +196,15 @@ public class VendaControle {
 		var venda = new Venda(horario, valorTotal, vendedor, cliente);
 		venda.setItens(itens);
 
-		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
+		try {
+			DatabaseSessionFactory.inTransaction(session -> {
+				session.persist(venda);
+			});
+		} catch (DatabaseException e) {
+			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
 
-		// TODO try catch shenanigans
-		sessionFactory.inTransaction(session -> {
-			session.persist(venda);
-		});
+			return;
+		}
 
 		JOptionPane.showMessageDialog(view, "Venda realizada com sucesso", "Venda finalizada", JOptionPane.INFORMATION_MESSAGE);
 
