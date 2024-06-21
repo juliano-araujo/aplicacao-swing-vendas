@@ -10,7 +10,6 @@ public class App {
 		SwingUtilities.invokeLater(() -> {
 			System.out.println("SYS > INICIADO");
 			
-			
 			new LoginControle();
 		});
 	}

@@ -33,7 +33,7 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAdicionar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
         scrollPane = new javax.swing.JScrollPane();
         tbItens = new javax.swing.JTable();
         line = new javax.swing.JSeparator();
@@ -45,16 +45,17 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
         txtSelecionarCliente = new javax.swing.JLabel();
         cBoxFuncionario = new javax.swing.JComboBox<>();
         cBoxCliente = new javax.swing.JComboBox<>();
+        btnAdicionar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(437, 483));
 
-        btnAdicionar.setBackground(new java.awt.Color(183, 230, 183));
-        btnAdicionar.setText("Adicionar");
-        btnAdicionar.setToolTipText("");
-        btnAdicionar.setActionCommand("Adicionar Produto");
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+        btnRemover.setBackground(new java.awt.Color(233, 128, 128));
+        btnRemover.setText("Remover");
+        btnRemover.setToolTipText("");
+        btnRemover.setActionCommand("Adicionar Produto");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
+                btnRemoverActionPerformed(evt);
             }
         });
 
@@ -104,10 +105,30 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
         txtSelecionarCliente.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         txtSelecionarCliente.setText("Selecionar Cliente:");
 
+        btnAdicionar.setBackground(new java.awt.Color(183, 230, 183));
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setToolTipText("");
+        btnAdicionar.setActionCommand("Adicionar Produto");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSelecionarFuncionario, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,18 +145,11 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
                                 .addComponent(txtValorTotal)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAdicionar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAdicionar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRemover)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSelecionarFuncionario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cBoxFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +167,9 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
                     .addComponent(cBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSelecionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btnAdicionar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRemover)
+                    .addComponent(btnAdicionar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -166,6 +182,10 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -174,6 +194,7 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnConcluir;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JComboBox<PessoaComboItem> cBoxCliente;
     private javax.swing.JComboBox<PessoaComboItem> cBoxFuncionario;
     private javax.swing.JSeparator line;
@@ -206,12 +227,16 @@ public class BotaoVendasVisao extends javax.swing.JPanel {
         return btnAdicionar;
     }
 
-	public javax.swing.JTable getTbItens() {
-		return tbItens;
-	}
-    
-	public DefaultTableModel getTbItensModel() {
-		return (DefaultTableModel) tbItens.getModel();
-	}
+    public javax.swing.JTable getTbItens() {
+            return tbItens;
+    }
+
+    public DefaultTableModel getTbItensModel() {
+            return (DefaultTableModel) tbItens.getModel();
+    }
+
+    public JButton getBtnRemover() {
+        return btnRemover;
+    }
 
 }

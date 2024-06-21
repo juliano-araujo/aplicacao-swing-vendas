@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -95,8 +94,6 @@ public class LoginControle {
 		
 		this.view.dispose();
 		
-		SwingUtilities.invokeLater(() -> {
-			new HomeControle();
-		});
+		new HomeControle();
 	}
 }

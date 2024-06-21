@@ -11,10 +11,6 @@ import javax.swing.JComponent;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Jujuba
- */
 public class AdicionarProdutoDialogVisao extends javax.swing.JDialog {
 
     /**

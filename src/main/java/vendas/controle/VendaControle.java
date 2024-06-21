@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
 import vendas.modelo.Item;
@@ -32,6 +33,7 @@ public class VendaControle {
 		this.view = new BotaoVendasVisao();
 		this.itens = new ArrayList<Item>();
 
+		this.initComponents();
 		this.bindEvents();
 	}
 	
@@ -40,7 +42,10 @@ public class VendaControle {
 
 		this.view.setVisible(true);
 	}
-
+	
+	private void initComponents() {
+		this.view.getBtnRemover().setEnabled(false);
+	}
 
 	private void loadData() {
 		var sessionFactory = DatabaseSessionFactory.getSessionFactory();
@@ -69,7 +74,22 @@ public class VendaControle {
 
 	private void bindEvents() {
 		this.view.getBtnAdicionar().addActionListener(this::btnAdicionar);
+		this.view.getBtnRemover().addActionListener(this::btnRemover);
 		this.view.getBtnConcluir().addActionListener(this::btnConcluir);
+		
+		this.view.getTbItens().getSelectionModel().addListSelectionListener(this::tableSelect);
+	}
+	
+	private void tableSelect(ListSelectionEvent event) {
+		if (this.view.getTbItens().getSelectionModel().isSelectionEmpty()) {
+			this.view.getBtnRemover().setEnabled(false);
+
+			return;
+		}
+
+		this.view.getBtnRemover().setEnabled(true);
+
+		return;
 	}
 
 	public BotaoVendasVisao getView() {
@@ -173,6 +193,11 @@ public class VendaControle {
 	}
 
 	private void btnConcluir(ActionEvent event) {
+		if (itens.isEmpty()) {
+			JOptionPane.showMessageDialog(view, "Selecione pelo menos um produto para realizar a venda", "Nenhum item selecionado", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		
 		PessoaComboItem vendedorFromCombo = (PessoaComboItem) this.view.getCBoxFuncionario().getSelectedItem();
 		PessoaComboItem clienteFromCombo = (PessoaComboItem) this.view.getCBoxCliente().getSelectedItem();
 
@@ -209,6 +234,18 @@ public class VendaControle {
 		JOptionPane.showMessageDialog(view, "Venda realizada com sucesso", "Venda finalizada", JOptionPane.INFORMATION_MESSAGE);
 
 		this.reset();
+	}
+	
+	private void btnRemover(ActionEvent event) {
+		if (this.view.getTbItens().getSelectionModel().isSelectionEmpty()) {
+			return;
+		}
+		int selectedRow = this.view.getTbItens().getSelectedRow();
+
+		this.itens.remove(selectedRow);
+		this.view.getTbItensModel().removeRow(selectedRow);
+		
+		this.updateValorTotalView();
 	}
 
 	public class PessoaComboItem {
