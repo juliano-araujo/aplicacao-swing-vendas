@@ -71,6 +71,8 @@ public class FormularioProdutoVisao extends javax.swing.JDialog {
         btnConfirmar.setBackground(new java.awt.Color(0, 255, 0));
         btnConfirmar.setText("Confirmar");
 
+        spinnerQuantidade.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(

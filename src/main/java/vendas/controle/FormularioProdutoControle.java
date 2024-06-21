@@ -61,6 +61,8 @@ public class FormularioProdutoControle {
 		
 		if (StringUtils.isBlank(descricao)) {
 			JOptionPane.showMessageDialog(view, "Insira o nome do produto", "Campo vazio", JOptionPane.WARNING_MESSAGE);
+			
+			return;
 		}
 		
 		FornecedorComboItem fornecedorCombo = (FornecedorComboItem) this.view.getCbFornecedor().getSelectedItem();

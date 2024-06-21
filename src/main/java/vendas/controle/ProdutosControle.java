@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 
 import vendas.modelo.Produto;
@@ -67,8 +69,36 @@ public class ProdutosControle {
 
 	private void bindEvents() {
 		this.view.getBtnRemover().addActionListener(this::btnRemover);
+		this.view.getBtnAdicionar().addActionListener(this::btnAdicionar);
+		this.view.getBtnAtualizar().addActionListener(this::btnAtualizar);
 		
 		this.view.getTable().getSelectionModel().addListSelectionListener(this::tableSelect);
+	}
+	
+	private void insertProduto(Produto produto) {
+		try {
+			DatabaseSessionFactory.inTransaction(session -> {
+				session.persist(produto);
+			});
+		} catch (DatabaseException e) {
+			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
+
+			return;
+		}
+
+		JOptionPane.showMessageDialog(view, "Produto Inserido", "Operação concluída", JOptionPane.INFORMATION_MESSAGE);
+		
+		var model = this.view.getTableModel();
+		
+		this.list.add(produto);
+		
+		model.addRow(new Object[] {
+				produto.getCodigo(),
+				produto.getDescricao(),
+				produto.getFornecedor().getDescricao(),
+				FormatUtils.toMonetaryString(produto.getValor()),
+				produto.getQuantidade()
+		});
 	}
 	
 	private void tableSelect(ListSelectionEvent event) {
@@ -116,6 +146,16 @@ public class ProdutosControle {
 		this.view.getTableModel().removeRow(selectedRow);
 	}
 
+	public void btnAdicionar(ActionEvent event) {
+		JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this.view);
+		new FormularioProdutoControle(mainFrame, this::insertProduto);
+	}
+	
+	public void btnAtualizar(ActionEvent event) {
+		JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this.view);
+//		new FormularioProdutoControle(mainFrame, this::updateProduto);
+	}
+	
 	public BotaoProdutosVisao getView() {
 		return view;
 	}
