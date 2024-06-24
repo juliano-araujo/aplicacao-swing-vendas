@@ -65,4 +65,8 @@ public class Venda {
 		itens.remove(item);
 		item.setVenda(null);
 	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
 }

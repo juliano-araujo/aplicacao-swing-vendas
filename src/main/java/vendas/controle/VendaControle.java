@@ -15,12 +15,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
+import org.hibernate.procedure.ProcedureCall;
+import org.hibernate.query.procedure.ProcedureParameter;
+
+import jakarta.persistence.ParameterMode;
 import vendas.modelo.Item;
 import vendas.modelo.Pessoa;
 import vendas.modelo.Produto;
 import vendas.modelo.Venda;
 import vendas.persistencia.DatabaseException;
 import vendas.persistencia.DatabaseSessionFactory;
+import vendas.persistencia.PSQLException;
 import vendas.utils.FormatUtils;
 import vendas.visao.BotaoVendasVisao;
 
@@ -191,6 +196,19 @@ public class VendaControle {
 		
 		new AdicionarProdutoControle(mainFrame, resumo, this::addItem);
 	}
+	
+	private void finalizarVenda(Venda venda) throws DatabaseException {
+		DatabaseSessionFactory.inTransaction(session -> {
+ 			session.persist(venda);
+			
+			ProcedureCall call = session.createStoredProcedureCall("verificacao_valor");
+			
+			ProcedureParameter<Integer> param = call.registerParameter(1, Integer.class, ParameterMode.IN);
+			call.setParameter(param, venda.getCodigo());
+			
+			call.execute();
+		});
+	}
 
 	private void btnConcluir(ActionEvent event) {
 		if (itens.isEmpty()) {
@@ -222,9 +240,17 @@ public class VendaControle {
 		venda.setItens(itens);
 
 		try {
-			DatabaseSessionFactory.inTransaction(session -> {
-				session.persist(venda);
-			});
+			this.finalizarVenda(venda);
+		} catch (PSQLException e) {
+			var hint = e.getHint();
+			
+			if (hint == null) {
+				hint = "Verifique os dados e tente novamente";
+			}
+			
+			JOptionPane.showMessageDialog(view, e.getMessage(), hint, JOptionPane.WARNING_MESSAGE);
+
+			return;
 		} catch (DatabaseException e) {
 			JOptionPane.showMessageDialog(view, e.getMessage(), "Erro na operação", JOptionPane.WARNING_MESSAGE);
 

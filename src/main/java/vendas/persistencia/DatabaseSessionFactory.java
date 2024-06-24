@@ -1,7 +1,11 @@
 package vendas.persistencia;
 
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.hibernate.HibernateException;
 import org.hibernate.JDBCException;
 import org.hibernate.Session;
@@ -9,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.exception.GenericJDBCException;
 import org.hibernate.exception.SQLGrammarException;
 
 import vendas.modelo.Fornecedor;
@@ -43,9 +48,21 @@ public class DatabaseSessionFactory {
 
 			if (e.getSQLState().equals("42501"));
 				throw new PrivilegeException("Você não tem permissões para realizar essa operação", e);
-		} catch (HibernateException e) {
+		} catch (GenericJDBCException e) {
 			e.printStackTrace();
 			
+			if (!e.getSQLState().equals("P0001"))
+				throw new DatabaseException("Ocorreu um erro na operação do banco de dados");
+			
+			var cause = (org.postgresql.util.PSQLException) e.getCause();
+			var localizedMessage = cause.getLocalizedMessage();
+
+			var messagePair = extractErrorAndHint(localizedMessage);
+
+			throw new PSQLException(messagePair.getLeft(), messagePair.getRight(), e);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+
 			throw new DatabaseException("Ocorreu um erro na operação do banco de dados");
 		}
 	}
@@ -97,5 +114,27 @@ public class DatabaseSessionFactory {
 		for (int i = 0; i < classes.length; i++) {
 			cfg.addAnnotatedClass(classes[i]);
 		}
+	}
+	
+	private static Pair<String, String> extractErrorAndHint(String localizedMessage) {
+		String regex  = "ERROR: (.*?)\\n(?:\\s+Dica: (.*?)\\n)?";
+
+		if (localizedMessage.contains("Hint")) {
+			regex = "ERROR: (.*?)\\n(?:\\s+Hint: (.*?)\\n)?";
+		} else if (localizedMessage.contains("HINT")) {
+			regex = "ERROR: (.*?)\\n(?:\\s+HINT: (.*?)\\n)?";
+		}
+
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(localizedMessage);
+
+		if (!matcher.find()) {
+			return null;
+		}
+
+		var error = matcher.group(1);
+		var hint = matcher.group(2);
+
+		return new ImmutablePair<String, String>(error, hint);
 	}
 }
