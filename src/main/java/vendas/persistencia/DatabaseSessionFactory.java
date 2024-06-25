@@ -117,12 +117,19 @@ public class DatabaseSessionFactory {
 	}
 	
 	private static Pair<String, String> extractErrorAndHint(String localizedMessage) {
-		String regex  = "ERROR: (.*?)\\n(?:\\s+Dica: (.*?)\\n)?";
+		String regex  = "$1: (.*?)\\n(?:\\s+$2: (.*?)\\n)?";
+		
 
-		if (localizedMessage.contains("Hint")) {
-			regex = "ERROR: (.*?)\\n(?:\\s+Hint: (.*?)\\n)?";
-		} else if (localizedMessage.contains("HINT")) {
-			regex = "ERROR: (.*?)\\n(?:\\s+HINT: (.*?)\\n)?";
+		if (localizedMessage.contains("Dica")) {
+			regex = regex.replace("$2", "Dica");
+		} else if (localizedMessage.contains("Hint")) {
+			regex = regex.replace("$2", "Hint");
+		}
+		
+		if (localizedMessage.contains("ERROR")) {
+			regex = regex.replace("$1", "Dica");
+		} else if (localizedMessage.contains("ERRO")) {
+			regex = regex.replace("$1", "Hint");
 		}
 
 		Pattern pattern = Pattern.compile(regex);
