@@ -248,7 +248,7 @@ public class VendaControle {
 				hint = "Verifique os dados e tente novamente";
 			}
 			
-			JOptionPane.showMessageDialog(view, e.getMessage(), hint, JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(view, hint, e.getMessage(), JOptionPane.WARNING_MESSAGE);
 
 			return;
 		} catch (DatabaseException e) {
